@@ -1,0 +1,201 @@
+[dotenv@17.2.1] injecting env (39) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+=========================================
+1. TRACING DISCOVERY (Target: 192.168.5.4)
+=========================================
+[SnmpEngine Intercept] getMany Called with OIDs: [ '1.3.6.1.2.1.1.5.0', '1.3.6.1.2.1.1.1.0', '1.3.6.1.2.1.1.2.0' ]
+[SnmpEngine Intercept] _createSession Called by: DiscoveryService
+  - Host: 192.168.5.4
+  - Port: 161
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[discovery] SNMP FAILURE for 192.168.5.4: Request timed out
+
+=========================================
+2. TRACING POLLING SCHEDULER (Target: 192.168.5.4)
+=========================================
+
+Resolved SNMP Config (AFTER FIX)
+Device ID: 38
+IP Address: 192.168.5.4
+SNMP Version: v2c
+Community: public
+Port: 161
+Timeout: 1000
+Retries: 1
+
+[SnmpEngine Intercept] getMany Called with OIDs: [
+  '1.3.6.1.2.1.1.5.0',
+  '1.3.6.1.2.1.1.1.0',
+  '1.3.6.1.2.1.1.2.0',
+  '1.3.6.1.2.1.1.3.0'
+]
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: 161
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+--- RAW SNMP RESPONSE (System) ---
+{
+  "success": false,
+  "error": "Request timed out"
+}
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+[SnmpEngine Intercept] _createSession Called by: SnmpPollerAdapter
+  - Host: 192.168.5.4
+  - Port: undefined
+  - Version: v2c
+  - Credentials (Community): public
+  - Timeout: 1000
+  - Retries: 1
+  - Transport: UDP (net-snmp default)
+Poll Result Status: OFFLINE
+Poll Result Error: Request timed out

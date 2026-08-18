@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>I-portal</title>
+    <link rel="icon" type="image/png" href="/isro_logo.png" />
+
+    <!-- Apply saved theme ASAP to avoid flash -->
+    <script>
+      (function () {
+        try {
+          var pref = localStorage.getItem("pmgt_theme") || "dark";
+          var cls = pref === "light" ? "theme-light" : "theme-dark";
+          // If the class is already there, don’t re-add
+          if (!document.documentElement.classList.contains(cls)) {
+            // Put it on <body> once it's available, else queue for DOMContentLoaded
+            var apply = function () {
+              var b = document.body;
+              if (b) b.classList.add(cls);
+            };
+            if (document.readyState === "loading") {
+              document.addEventListener("DOMContentLoaded", apply, { once: true });
+            } else {
+              apply();
+            }
+          }
+        } catch (e) {
+          // fallback: dark
+          document.addEventListener(
+            "DOMContentLoaded",
+            function () { document.body.classList.add("theme-dark"); },
+            { once: true }
+          );
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- Your bundle loads AFTER the theme class is applied -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

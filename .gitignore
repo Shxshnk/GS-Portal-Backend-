@@ -1,0 +1,16 @@
+node_modules/
+.env
+*.log
+*.txt
+scratch_migrate.js
+check_profiles.js
+aws_multi_region.js
+aws_real_execution.js
+test_aws_profiles_api.js
+test_aws_real.js
+test_discovery_crash.js
+test_e2e_discovery.js
+trace_aws_auth.js
+update_interval.js
+verify_phase2.js
+phase2_verify_results.json

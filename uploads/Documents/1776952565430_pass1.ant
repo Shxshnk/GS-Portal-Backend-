@@ -1,0 +1,26 @@
+
+ GENERATION DATE : 02-03-2025                             TIME : 11:06:03 UT 
+ ------------------------------------------------------------------------------
+
+
+
+ OMS 101  GENERAL SCHEDULE
+
+ FROM      : MDUAGER,Simulations & Scheduling,SCC,ISTRAC,BLR
+ TO        : MDUAGER/INCHARGE DUT G/S DUT
+
+ SOURCE    : SCC                        DESTINATION : DUT
+
+ QFT       : MOH/SCH/QF/09B
+
+           :::::::::::::::::::::::::::::::::::::::::::::::::
+           : START DATE  02-03-2025  END DATE  15-03-2025 :
+           :::::::::::::::::::::::::::::::::::::::::::::::::
+-------------------------------------------------------------------------------- 
+    DATE     S/C  STN  ORBIT   Max     AOS       LOS     OPERATIONS  
+ yyyy-mm-dd                    ele   hh:mm:ss  hh:mm:ss  
+-------------------------------------------------------------------------------- 
+ 2025 03 03   Spadex  BAL1  21906  56.31  00:01:14  00:13:20  NO SUPPORT<P3R>
+ 2025 03 03   Spadex  BAL1  76751  28.04  00:01:30  00:15:55  TM,TC,TR,PB
+
+ 

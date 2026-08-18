@@ -1,0 +1,183 @@
+[dotenv@17.2.1] injecting env (39) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+=========================================
+E2E TRACE: Registration to Database
+=========================================
+
+1. Exact POST /api/monitoring/devices request body:
+{
+  "deviceName": "Core-Switch",
+  "ipAddress": "192.168.5.4",
+  "macAddress": null,
+  "vendor": "Cisco",
+  "model": "Catalyst 9300",
+  "snmpVersion": "v2c",
+  "deviceType": "Switch",
+  "profileId": null,
+  "status": "ONLINE",
+  "sysName": "Core-Switch.local",
+  "sysDescr": "Cisco IOS Software, Catalyst 9300",
+  "sysObjectID": "1.3.6.1.4.1.9.1.2805",
+  "sysUpTime": "1234567",
+  "credentials": {
+    "community": "public",
+    "port": 161,
+    "timeout": 2000,
+    "retries": 2
+  }
+}
+
+2. Inside MonitoringService.create() [addDevice], payload before normalization:
+{
+  "deviceName": "Core-Switch",
+  "ipAddress": "192.168.5.4",
+  "macAddress": null,
+  "vendor": "Cisco",
+  "model": "Catalyst 9300",
+  "snmpVersion": "v2c",
+  "deviceType": "Switch",
+  "profileId": null,
+  "status": "ONLINE",
+  "sysName": "Core-Switch.local",
+  "sysDescr": "Cisco IOS Software, Catalyst 9300",
+  "sysObjectID": "1.3.6.1.4.1.9.1.2805",
+  "sysUpTime": "1234567",
+  "credentials": {
+    "community": "public",
+    "port": 161,
+    "timeout": 2000,
+    "retries": 2
+  }
+}
+
+3. Inside normalizePayload() output object (which is passed to MonitoringDevice.create):
+{
+  "deviceName": "Core-Switch",
+  "sys_name": "Core-Switch.local",
+  "sys_descr": "Cisco IOS Software, Catalyst 9300",
+  "sys_object_id": "1.3.6.1.4.1.9.1.2805",
+  "sys_uptime": "1234567",
+  "ipAddress": "192.168.5.4",
+  "macAddress": "",
+  "vendor": "Cisco",
+  "model": "Catalyst 9300",
+  "deviceType": "Switch",
+  "snmpVersion": "v2c",
+  "credentials": {
+    "port": 161,
+    "timeout": 2000,
+    "retries": 2,
+    "pollInterval": null,
+    "maxOidsPerRequest": null,
+    "maxRepetitions": null,
+    "preferredOperation": null,
+    "enableBulkWalk": null,
+    "enableInterfaceDiscovery": null,
+    "enableHistoricalTelemetry": null,
+    "enablePerformancePolling": null,
+    "enableEnvironmentalPolling": null,
+    "community": "public"
+  },
+  "profileId": null,
+  "status": "ONLINE"
+}
+
+4. Inside MonitoringDevice.create(), SQL INSERT parameters:
+[
+  'Core-Switch',
+  null,
+  '192.168.5.4',
+  null,
+  'Cisco',
+  'Catalyst 9300',
+  null,
+  null,
+  null,
+  'Switch',
+  null,
+  null,
+  null,
+  null,
+  null,
+  'Core-Switch.local',
+  'Cisco IOS Software, Catalyst 9300',
+  '1.3.6.1.4.1.9.1.2805',
+  '1234567',
+  'v2c',
+  '{"port":161,"timeout":2000,"retries":2,"pollInterval":null,"maxOidsPerRequest":null,"maxRepetitions":null,"preferredOperation":null,"enableBulkWalk":null,"enableInterfaceDiscovery":null,"enableHistoricalTelemetry":null,"enablePerformancePolling":null,"enableEnvironmentalPolling":null,"community":"public"}',
+  'ONLINE',
+  1,
+  null,
+  'Configured',
+  'public'
+]
+
+5. Immediately after INSERT, execute SELECT for ID 54:
+{
+  hostname: null,
+  sys_name: 'Core-Switch.local',
+  sys_descr: 'Cisco IOS Software, Catalyst 9300',
+  sys_object_id: '1.3.6.1.4.1.9.1.2805',
+  vendor: 'Cisco',
+  model: 'Catalyst 9300'
+}
+
+6. Call GET /api/monitoring/devices/54 (MonitoringDevice.findById):
+{
+  id: 54,
+  deviceName: 'Core-Switch',
+  hostname: null,
+  ipAddress: '192.168.5.4',
+  macAddress: null,
+  vendor: 'Cisco',
+  model: 'Catalyst 9300',
+  serialNumber: null,
+  firmware: null,
+  osVersion: null,
+  deviceType: 'Switch',
+  site: null,
+  rack: null,
+  location: null,
+  latitude: null,
+  longitude: null,
+  snmpVersion: 'v2c',
+  credentials: {
+    port: 161,
+    retries: 2,
+    timeout: 2000,
+    community: 'public',
+    pollInterval: null,
+    enableBulkWalk: null,
+    maxRepetitions: null,
+    maxOidsPerRequest: null,
+    preferredOperation: null,
+    enableInterfaceDiscovery: null,
+    enablePerformancePolling: null,
+    enableHistoricalTelemetry: null,
+    enableEnvironmentalPolling: null
+  },
+  status: 'ONLINE',
+  lastPoll: null,
+  isActive: true,
+  sysName: 'Core-Switch.local',
+  sysDescr: 'Cisco IOS Software, Catalyst 9300',
+  sysObjectID: '1.3.6.1.4.1.9.1.2805',
+  sysUpTime: '1234567',
+  lastPollError: null,
+  availability: 100,
+  healthScore: 100,
+  responseTime: null,
+  pollDuration: null,
+  lastSuccessfulPoll: null,
+  lastFailedPoll: null,
+  pollCount: 0,
+  errorCount: 0,
+  profileId: null,
+  lifecycleState: 'Configured',
+  createdAt: '2026-08-10 16:01:00',
+  updatedAt: '2026-08-10 16:01:00',
+  cpuUtil: null,
+  memUtil: null,
+  cpuCores: null,
+  totalRam: null,
+  bootTime: null
+}
