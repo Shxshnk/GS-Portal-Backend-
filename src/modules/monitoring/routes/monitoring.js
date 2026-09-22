@@ -551,4 +551,21 @@ router.post("/aws/register", async (req, res) => {
   }
 });
 
+
+// Append dashboard route to monitoring.js
+const GroundStationMonitoringService = require("../services/GroundStationMonitoringService");
+
+router.get("/ground-stations/dashboard", async (req, res) => {
+  try {
+    const timeRange = req.query.timeRange || "15m";
+    const stat = req.query.stat || "Average";
+    const dashboardData = await GroundStationMonitoringService.getDashboardData(timeRange, stat);
+    return res.json({ success: true, dashboard: dashboardData });
+  } catch (error) {
+    console.error("[monitoring] GET /ground-stations/dashboard error:", error);
+    return sendError(res, error, "Failed to fetch Ground Station Dashboard");
+  }
+});
+
 module.exports = router;
+

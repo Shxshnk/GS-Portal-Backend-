@@ -52,8 +52,10 @@ const ticketsRouter = require("./routes/Tickets");
 const categoriesRouter = require("./routes/Categories");
 const antennasRoute = require("./routes/Antennas");
 const visibilityScheduleRouter = require("./routes/VisibilitySchedule");
+const regionsRouter = require("./routes/Regions");
 const monitoringRouter = require("./modules/monitoring/routes/monitoring");
 const MonitoringPollingService = require("./modules/monitoring/services/MonitoringPollingService");
+const RegionModel = require("./modules/monitoring/models/RegionModel");
 
 // Public S3 uploader
 const schedulePassesPublic = require("./routes/ShedulePasses");
@@ -158,6 +160,7 @@ app.use("/api/categories", authRequired, categoriesRouter);
 app.use("/api/antennas", antennasRoute);
 app.use("/api/antenna-requests", require("./routes/AntennaRequests"));
 app.use("/api/visibility-schedule", authRequired, visibilityScheduleRouter);
+app.use("/api/regions", authRequired, regionsRouter);
 app.use("/api/monitoring", authRequired, monitoringRouter);
 
 /* ---------- 404 & errors ---------- */
@@ -178,6 +181,8 @@ function start() {
   console.log(`[boot] NODE_ENV=${process.env.NODE_ENV || "development"} | PORT=${port}`);
   console.log("[boot] CORS allowlist:", ALLOW_LIST.join(", "));
   if (awsContactsRouter) console.log("[boot] Routers -> AWS Contacts: ENABLED");
+  
+  RegionModel.ensureTables().catch(err => console.error("[boot] RegionModel initialization failed:", err.message));
   MonitoringPollingService.start();
 
   server = app.listen(port, "0.0.0.0", () =>
